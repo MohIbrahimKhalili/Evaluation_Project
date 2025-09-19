@@ -10,20 +10,30 @@ class CourseView {
   renderAvailableCourses(courses) {
     this.availableCourses.innerHTML = "";
     courses.forEach(course => {
-      const option = document.createElement("option");
-      option.value = course.courseId;
-      option.textContent = `${course.courseName} (${course.required ? "Compulsory" : "Elective"}) - ${course.credit} cr`;
-      option.dataset.credit = course.credit;
-      this.availableCourses.appendChild(option);
+      const div = document.createElement("div");
+      div.classList.add("course-unit");
+      div.dataset.courseId = course.courseId;
+      div.dataset.credit = course.credit;
+      div.innerHTML = `
+        <div>${course.courseName}</div>
+        <div>${course.required ? "Compulsory" : "Elective"}</div>
+        <div>${course.credit} cr</div>
+      `;
+      this.availableCourses.appendChild(div);
     });
   }
 
   renderSelectedCourse(course) {
-    const option = document.createElement("option");
-    option.value = course.courseId;
-    option.textContent = `${course.courseName} (${course.required ? "Compulsory" : "Elective"}) - ${course.credit} cr`;
-    option.dataset.credit = course.credit;
-    this.selectedCourses.appendChild(option);
+    const div = document.createElement("div");
+    div.classList.add("course-unit");
+    div.dataset.courseId = course.courseId;
+    div.dataset.credit = course.credit;
+    div.innerHTML = `
+      <div>${course.courseName}</div>
+      <div>${course.required ? "Compulsory" : "Elective"}</div>
+      <div>${course.credit} cr</div>
+    `;
+    this.selectedCourses.appendChild(div);
   }
 
   updateTotalCredits(total) {

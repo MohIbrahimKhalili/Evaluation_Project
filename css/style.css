@@ -16,44 +16,53 @@ h1 {
   margin-top: 30px;
 }
 
+/* List box container */
 .list-box {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.list-box h3 {
-  margin-bottom: 10px;
-  color: #555;
-  font-size: 16px;
-}
-
-/* Default style for listbox */
-select {
-  width: 300px;               /* width of the listbox */
-  height: 400px;              /* height of the listbox */
-  padding: 5px;
-  font-size: 14px;
-  font-family: Arial, sans-serif;
-  color: #333;
-  background-color: #fff;     /* default white background */
-  border: 1px solid #ccc;     /* light gray border */
+/* Bucket styling */
+.bucket {
+  width: 300px;           /* wide enough */
+  height: 400px;          /* show ~10 items */
+  border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-  overflow-y: auto;
-  outline: none;              /* remove default focus outline */
+  overflow-y: auto;       /* scroll if items overflow */
+  padding: 0;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Course unit styling */
+.course-unit {
+  flex: 0 0 40px;        /* fixed height ~10 items in 400px */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
   cursor: pointer;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  transition: background-color 0.3s;
 }
 
-/* Hover effect for listbox */
-select:hover {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0,123,255,0.5);
+/* Alternating row colors */
+.bucket .course-unit:nth-child(even) {
+  background-color: rgb(221, 239, 221);
 }
 
-/* Selected option highlight (browser default) */
-select option:checked {
-  background-color: #007bff;
+.bucket .course-unit:nth-child(odd) {
+  background-color: #f7f7f7;
+}
+
+/* Selected course */
+.course-unit.selected {
+  background-color: deepskyblue !important;
   color: white;
 }
 
@@ -62,24 +71,26 @@ select option:checked {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-top: 40px;
 }
 
 button {
-  margin-bottom: 10px;
   padding: 8px 16px;
-  background: #007bff;
-  border: none;
+  margin-bottom: 10px;
+  background-color: #007bff;
   color: white;
-  cursor: pointer;
+  border: none;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 button:disabled {
-  background: gray;
+  background-color: gray;
   cursor: not-allowed;
 }
 
-p {
+#totalCredits {
+  font-weight: bold;
   font-size: 16px;
 }

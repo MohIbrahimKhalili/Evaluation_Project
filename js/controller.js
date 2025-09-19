@@ -7,22 +7,27 @@ document.addEventListener("DOMContentLoaded", async () => {
   const courses = await model.fetchCourses();
   view.renderAvailableCourses(courses);
 
-  view.addBtn.addEventListener("click", () => {
-    const selectedOptions = Array.from(view.availableCourses.selectedOptions);
+  // Click to select/deselect courses in available bucket
+  view.availableCourses.addEventListener("click", e => {
+    const unit = e.target.closest(".course-unit");
+    if (!unit) return;
+    unit.classList.toggle("selected");
+  });
 
-    selectedOptions.forEach(option => {
-      const courseId = parseInt(option.value);
+  // Add selected courses
+  view.addBtn.addEventListener("click", () => {
+    const selectedUnits = view.availableCourses.querySelectorAll(".course-unit.selected");
+    selectedUnits.forEach(unit => {
+      const courseId = parseInt(unit.dataset.courseId);
       const course = courses.find(c => c.courseId === courseId);
       if (totalCredits + course.credit <= 18) {
         totalCredits += course.credit;
         view.renderSelectedCourse(course);
-        option.remove(); // Remove from available
+        unit.remove(); // remove from available
       }
     });
 
     view.updateTotalCredits(totalCredits);
-
-    // Disable Add button if max 18 credits
     view.addBtn.disabled = totalCredits >= 18;
   });
 });
