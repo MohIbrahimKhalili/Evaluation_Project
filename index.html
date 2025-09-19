@@ -2,31 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Course Selection</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Course Selection MVC</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <h2>Course Selection (Max 18 Credit Hours)</h2>
-
-  <div class="main-container">
-    <!-- Available -->
-    <div class="bucket">
+  <h1>Course Selection</h1>
+  <div class="container">
+    <div class="list-box">
       <h3>Available Courses</h3>
-      <div id="availableCourses" class="course-container"></div>
+      <select id="availableCourses" multiple></select>
     </div>
 
-    <!-- Selected -->
-    <div class="bucket">
+    <div class="controls">
+      <button id="addBtn">Add →</button>
+      <p>Total Credit Hours: <span id="totalCredits">0</span>/18</p>
+    </div>
+
+    <div class="list-box">
       <h3>Selected Courses</h3>
-      <div id="selectedCourses" class="course-container"></div>
+      <select id="selectedCourses" multiple></select>
     </div>
   </div>
 
-  <!-- Total credit counter at bottom -->
-  <div class="footer">
-    <p id="totalCredits">Total Credits: 0</p>
-  </div>
-
-  <script type="module" src="./js/controller.js"></script>
+  <script src="js/model.js"></script>
+  <script src="js/view.js"></script>
+  <script src="js/controller.js"></script>
 </body>
 </html>
