@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Selection</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Course Selection (Max 18 Credit Hours)</h2>
+
+  <div class="main-container">
+    <!-- Available -->
+    <div class="bucket">
+      <h3>Available Courses</h3>
+      <div id="availableCourses" class="course-container"></div>
+    </div>
+
+    <!-- Selected -->
+    <div class="bucket">
+      <h3>Selected Courses</h3>
+      <div id="selectedCourses" class="course-container"></div>
+    </div>
+  </div>
+
+  <!-- Total credit counter at bottom -->
+  <div class="footer">
+    <p id="totalCredits">Total Credits: 0</p>
+  </div>
+
+  <script type="module" src="./js/controller.js"></script>
+</body>
+</html>
